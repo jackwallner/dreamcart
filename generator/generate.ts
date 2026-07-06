@@ -32,7 +32,7 @@ if (!SUPABASE_URL || !SERVICE_KEY) {
   Deno.exit(1);
 }
 const BUCKET = "product-art";
-const CONCURRENCY = 2;
+const CONCURRENCY = 1;
 const ATTEMPTS = 14;
 
 // ---------- small helpers ----------
