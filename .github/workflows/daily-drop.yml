@@ -1,0 +1,31 @@
+name: Daily Product Drop
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC, ahead of the app's UTC drop day rollover
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many products to drop"
+        default: "12"
+
+jobs:
+  drop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Generate today's drop (images pre-rendered to storage)
+        env:
+          SHOP_SUPABASE_URL: ${{ secrets.SHOP_SUPABASE_URL }}
+          SHOP_SUPABASE_SECRET: ${{ secrets.SHOP_SUPABASE_SECRET }}
+        run: |
+          deno run --allow-net --allow-env generator/generate.ts drop \
+            --count "${{ github.event.inputs.count || '12' }}"
