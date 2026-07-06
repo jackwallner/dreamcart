@@ -32,7 +32,8 @@ if (!SUPABASE_URL || !SERVICE_KEY) {
   Deno.exit(1);
 }
 const BUCKET = "product-art";
-const CONCURRENCY = 3;
+const CONCURRENCY = 2;
+const ATTEMPTS = 14;
 
 // ---------- small helpers ----------
 
@@ -50,10 +51,12 @@ async function rest(path: string, init: RequestInit = {}): Promise<Response> {
   });
 }
 
-/// Download one generated image, retrying through queue-full 500s and slow
-/// renders. Returns null only after exhausting every attempt.
+/// Download one generated image, retrying through queue-full 500s, 429
+/// rate limits, and slow renders. Returns null only after exhausting every
+/// attempt — the endpoint rate-limits per IP hard, so waits are generous.
 async function fetchImage(url: string, label: string): Promise<Uint8Array | null> {
-  for (let attempt = 1; attempt <= 8; attempt++) {
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
+    let rateLimited = false;
     try {
       const res = await fetch(url, {
         signal: AbortSignal.timeout(150_000),
@@ -66,12 +69,14 @@ async function fetchImage(url: string, label: string): Promise<Uint8Array | null
         console.log(`  [${label}] attempt ${attempt}: not an image (${bytes.length}b)`);
       } else {
         await res.body?.cancel();
+        rateLimited = res.status === 429;
         console.log(`  [${label}] attempt ${attempt}: HTTP ${res.status}`);
       }
     } catch (e) {
       console.log(`  [${label}] attempt ${attempt}: ${(e as Error).message}`);
     }
-    await sleep(10_000 * attempt + Math.random() * 5_000);
+    const base = rateLimited ? 20_000 : 10_000;
+    await sleep(Math.min(base * attempt, 120_000) + Math.random() * 8_000);
   }
   return null;
 }
