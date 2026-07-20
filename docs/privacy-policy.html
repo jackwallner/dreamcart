@@ -30,19 +30,20 @@
 <ul>
   <li><strong>Account identifier</strong> — when you sign in with Apple, we receive a stable user ID from Apple and Supabase Auth. We do not receive your email unless you choose to share it with Apple.</li>
   <li><strong>Game data</strong> — your display name, coin balance, closet, outfits, favorites, streak, and purchase history within the game are stored on our Supabase backend so your progress syncs across sessions.</li>
-  <li><strong>Purchase receipts</strong> — when you buy a coin pack, Apple processes payment. We use RevenueCat to validate receipts and credit coins. RevenueCat receives an anonymous app user ID and transaction data, not your closet, outfits, favorites, or other gameplay content beyond purchase events.</li>
+  <li><strong>Purchase receipts</strong> — when you buy a coin pack, Apple processes payment. We use RevenueCat to validate receipts and credit coins. RevenueCat receives an app user ID and transaction data, not your closet, outfits, favorites, or other gameplay content beyond purchase events.</li>
+  <li><strong>Usage and product interaction data</strong> — we record app sessions, onboarding progress, feature taps, product views, cart actions, virtual checkouts, wheel results, and coin-pack purchase events in our Supabase backend. Events include an app user ID after sign-in, a temporary session ID, app version, locale, timestamp, and feature-specific values such as product IDs or coin totals. Shipping address contents are never included.</li>
 </ul>
 
 <h2>What we don't collect</h2>
 <ul>
-  <li>No ads, ad tracking, or third-party analytics SDKs</li>
+  <li>No ads, cross-app tracking, or third-party analytics SDKs</li>
   <li>No sale or sharing of personal data for advertising</li>
   <li>No access to your photos, contacts, or location</li>
   <li>No real shipping or payment card data (Apple handles all payments)</li>
 </ul>
 
 <h2>How we use data</h2>
-<p>We use your account and game data solely to operate DreamCart: saving your closet, enforcing the coin economy, syncing progress, and supporting your account. Product images are generated on demand from third-party image services using non-personal prompts; we do not send your identity to those services.</p>
+<p>We use account and game data to operate DreamCart: saving your closet, enforcing the coin economy, syncing progress, and supporting your account. We use interaction data to understand feature performance and improve the app. Product images are generated on demand from third-party image services using non-personal prompts; we do not send your identity to those services.</p>
 
 <h2>Third-party services</h2>
 <ul>
