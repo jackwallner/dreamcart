@@ -1,70 +1,657 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DreamCart: Dopamine Shopping | Virtual fashion game</title>
-  <meta name="description" content="DreamCart is a virtual fashion shopping game for iPhone. Browse, build outfits, spend coins, and fill your closet without buying real merchandise.">
-  <link rel="canonical" href="https://jackwallner.github.io/dreamcart/">
-  <link rel="icon" type="image/png" sizes="256x256" href="icon_256.png">
-  <link rel="apple-touch-icon" href="icon_256.png">
-  <meta property="og:title" content="DreamCart: Dopamine Shopping">
-  <meta property="og:description" content="The shopping high with none of the bill. Virtual fashion hauls, daily coins, and a closet that's all yours.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jackwallner.github.io/dreamcart/">
-  <meta property="og:image" content="https://jackwallner.github.io/dreamcart/icon_256.png">
-  <style>
-    :root { --ink:#17141a; --violet:#7139d4; --pink:#ff3d8b; --coral:#ff8965; --gold:#f5b301; --bg:#fbf8f4; --paper:#fff; --muted:#6d6671; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
-    .hero { padding:72px 24px 84px; color:#fff; text-align:center; background:linear-gradient(135deg,var(--violet),var(--pink) 57%,var(--coral)); }
-    .hero img { width:116px; height:116px; border-radius:28px; box-shadow:0 20px 46px #41136a55; }
-    .eyebrow { margin:24px 0 10px; color:#ffe1ef; font-size:.76rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
-    h1 { margin:0; font-size:clamp(2.5rem,7vw,4.8rem); line-height:1.02; letter-spacing:-.06em; }
-    .hero p { max-width:600px; margin:18px auto 0; color:#fff4fa; font-size:1.16rem; }
-    .wrap { width:min(980px,calc(100% - 40px)); margin:auto; }
-    .intro { display:grid; grid-template-columns:1fr 1fr; gap:28px; padding:58px 0 24px; }
-    .intro h2 { margin:0; font-size:clamp(1.9rem,4vw,2.8rem); line-height:1.08; letter-spacing:-.045em; }
-    .intro p { margin:2px 0 0; color:var(--muted); font-size:1.04rem; }
-    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; padding:22px 0 40px; }
-    .feature { padding:25px; border:1px solid #eee4ee; border-radius:20px; background:var(--paper); box-shadow:0 10px 30px #49265a0a; }
-    .feature .badge { display:inline-block; margin-bottom:14px; padding:4px 10px; border-radius:99px; color:#624400; background:linear-gradient(90deg,var(--gold),#ffe18c); font-size:.72rem; font-weight:800; }
-    .feature b { display:block; margin-bottom:7px; font-size:1.04rem; }
-    .feature p { margin:0; color:var(--muted); font-size:.94rem; }
-    .note { margin:0 0 34px; padding:18px 20px; border-left:4px solid var(--pink); border-radius:0 12px 12px 0; background:#fff0f6; color:#765c69; font-size:.92rem; }
-    .links { display:flex; flex-wrap:wrap; gap:10px 20px; padding:24px 0 62px; border-top:1px solid #eadfea; }
-    .links a { color:var(--violet); font-weight:700; }
-    footer { padding:28px 20px 44px; color:#7f7480; text-align:center; font-size:.86rem; }
-    footer a { color:var(--violet); }
-    @media (max-width:700px) { .intro,.features { grid-template-columns:1fr; } .intro { gap:14px; } }
-    @media (max-width:500px) { .hero { padding-top:54px; } .wrap { width:min(100% - 32px,980px); } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="256x256" href="icon_256.png">
+    <link rel="apple-touch-icon" href="icon_256.png">
+    <title>DreamCart: Dopamine Shopping - Virtual Fashion Shopping Game for iPhone</title>
+    <meta name="description" content="Shop fashion without spending real money. Claim free coins daily, browse original virtual brands, check out with coins, and build a closet. All imaginary.">
+    <link rel="canonical" href="https://jackwallner.github.io/dreamcart/">
+    <meta name="apple-itunes-app" content="app-id=6787820106">
+    <meta name="keywords" content="virtual shopping game, fashion game, dress up, outfit builder, dopamine shopping, closet, coins, haul, window shopping, style game, iPhone">
+    <meta property="og:title" content="DreamCart: Dopamine Shopping">
+    <meta property="og:description" content="The shopping high with none of the bill. Virtual fashion hauls, daily free coins, and a closet that's all yours.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jackwallner.github.io/dreamcart/">
+    <meta property="og:image" content="https://jackwallner.github.io/dreamcart/appstore-screenshot-01.png">
+    <meta property="og:site_name" content="DreamCart">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DreamCart: Dopamine Shopping">
+    <meta name="twitter:description" content="Browse original virtual fashion, check out with coins, and build your dream closet. Nothing real is ever shipped.">
+    <meta name="twitter:image" content="https://jackwallner.github.io/dreamcart/appstore-screenshot-01.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DreamCart: Dopamine Shopping",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Free to play with daily coins, the daily wheel, checkout, closet, and outfit builder"
+            },
+            {
+                "@type": "Offer",
+                "price": "1.99",
+                "priceCurrency": "USD",
+                "description": "Pocket of Coins, optional consumable coin pack for in-app use"
+            },
+            {
+                "@type": "Offer",
+                "price": "4.99",
+                "priceCurrency": "USD",
+                "description": "Bag of Coins, optional consumable coin pack for in-app use"
+            },
+            {
+                "@type": "Offer",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "Haul of Coins, optional consumable coin pack for in-app use"
+            }
+        ],
+        "description": "DreamCart is a virtual fashion shopping game for iPhone. Claim free coins daily, spin the daily wheel, browse original virtual clothing brands, check out with coins, and build outfits in your closet. All items and coins are imaginary.",
+        "url": "https://jackwallner.github.io/dreamcart/",
+        "downloadUrl": "https://apps.apple.com/us/app/dreamcart-dopamine-shopping/id6787820106",
+        "screenshot": "https://jackwallner.github.io/dreamcart/appstore-screenshot-01.png",
+        "softwareVersion": "1.0",
+        "author": {
+            "@type": "Person",
+            "name": "Jack Wallner"
+        }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            color: #1d1d1f;
+            background: #fafafa;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background: rgba(250,250,250,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1d1d1f;
+        }
+
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+        }
+
+        .nav-brand span {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            text-decoration: none;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 980px;
+            font-weight: 500;
+            transition: opacity 0.15s;
+        }
+
+        .nav-link:hover { opacity: 0.85; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 24px 64px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.08;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #7c3aed, #ff3d8b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.5;
+            max-width: 440px;
+            margin: 0 auto 12px;
+        }
+
+        .hero .platforms {
+            font-size: 13px;
+            color: #86868b;
+            letter-spacing: 0.3px;
+            margin-bottom: 36px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #1d1d1f;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 14px 36px;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: opacity 0.15s;
+        }
+
+        .download-btn:hover { opacity: 0.85; }
+
+        /* Screenshot showcase */
+        .showcase {
+            padding: 0 0 80px;
+        }
+
+        .showcase-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+
+        .showcase-scroll::-webkit-scrollbar { display: none; }
+
+        .showcase-card {
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.08);
+        }
+
+        .showcase-card img {
+            height: 540px;
+            display: block;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .features-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .features-header p {
+            font-size: 17px;
+            color: #6e6e73;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(0,0,0,0.06);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 36px 32px;
+        }
+
+        .feature-card .label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #86868b;
+            margin-bottom: 10px;
+        }
+
+        .feature-card .label.coins {
+            color: #7c3aed;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.55;
+        }
+
+        /* Privacy */
+        .privacy {
+            padding: 80px 0;
+        }
+
+        .privacy .container {
+            max-width: 640px;
+            text-align: center;
+        }
+
+        .privacy .lockup {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #f5f5f7;
+            margin-bottom: 20px;
+        }
+
+        .privacy .lockup svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #1d1d1f;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .privacy h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .privacy p {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .privacy a {
+            font-size: 15px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .privacy a:hover { text-decoration: underline; }
+
+        /* More Info */
+        .more-info {
+            padding: 64px 24px;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .more-info-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .more-info-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .more-info-header p {
+            font-size: 17px;
+            color: #6e6e73;
+        }
+
+        .more-info-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .more-info-section {
+            margin-bottom: 40px;
+        }
+
+        .more-info-section h3 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #86868b;
+            margin-bottom: 12px;
+        }
+
+        .more-info-section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .more-info-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .more-info-section strong {
+            font-weight: 600;
+        }
+
+        .specs-table {
+            width: 100%;
+            font-size: 14px;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .specs-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .specs-table td:first-child {
+            color: #86868b;
+            width: 140px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            padding: 40px 24px 0;
+        }
+
+        .disclaimer .container {
+            max-width: 720px;
+        }
+
+        .disclaimer p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #86868b;
+            text-align: center;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 64px 24px 80px;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .cta p {
+            font-size: 15px;
+            color: #86868b;
+            margin-bottom: 28px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 24px;
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        footer a {
+            color: #86868b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover { color: #1d1d1f; }
+
+        footer .divider { margin: 4px 0; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 72px 20px 48px; }
+            .hero h1 { font-size: 36px; letter-spacing: -1px; }
+            .hero .tagline { font-size: 17px; }
+
+            .showcase-card img { height: 400px; }
+
+            .features-grid { grid-template-columns: 1fr; }
+
+            .features-header h2 { font-size: 28px; }
+            .privacy h2, .cta h2 { font-size: 26px; }
+        }
+
+        @media (max-width: 480px) {
+            .showcase-card img { height: 360px; }
+        }
+    </style>
 </head>
 <body>
-  <header class="hero">
-    <img src="icon_256.png" alt="DreamCart app icon" width="116" height="116">
-    <p class="eyebrow">A virtual fashion shopping game</p>
-    <h1>DreamCart</h1>
-    <p>Browse, build your cart, check out with coins, and style your dream closet. The dopamine hit with zero buyer's remorse.</p>
-  </header>
-  <main class="wrap">
-    <section class="intro">
-      <h2>Window shop without the bill.</h2>
-      <p>DreamCart turns the satisfying parts of shopping into a playful iPhone game. Browse original virtual fashion, fill your cart, unlock outfits, and collect pieces for your virtual closet. Everything in DreamCart is imaginary. No real merchandise is sold or shipped.</p>
-    </section>
-    <section class="features" aria-label="DreamCart features">
-      <article class="feature"><span class="badge">Every day</span><b>Start with free coins</b><p>Claim your daily drop, keep your streak alive, and spin the wheel for bonus coins.</p></article>
-      <article class="feature"><span class="badge">Browse</span><b>Build the cart</b><p>Mix tops, bottoms, shoes, jackets, jewelry, and accessories into looks you actually want to save.</p></article>
-      <article class="feature"><span class="badge">Collect</span><b>Grow your closet</b><p>Check out with virtual coins, unbox your finds, and use the outfit builder to make a look of your own.</p></article>
-    </section>
-    <p class="note"><strong>Virtual only:</strong> DreamCart items and coins have no cash value. Optional coin packs are for in-app use only, and DreamCart does not sell or ship physical products.</p>
-    <nav class="links" aria-label="DreamCart links">
-      <a href="support.html">Support</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
-      <a href="https://github.com/jackwallner/dreamcart-ios">Source on GitHub</a>
+
+    <nav>
+        <div class="container">
+            <a class="nav-brand" href="./">
+                <img src="icon_256.png" alt="DreamCart">
+                <span>DreamCart</span>
+            </a>
+            <a class="nav-link" href="https://apps.apple.com/us/app/dreamcart-dopamine-shopping/id6787820106">Download</a>
+        </div>
     </nav>
-  </main>
-  <footer>DreamCart is a virtual fashion shopping game for iPhone. All shopping is imaginary.<br><a href="mailto:jackwallner+q@gmail.com">Questions? Email Jack Wallner.</a></footer>
+
+    <section class="hero">
+        <h1>The shopping high, <span>none of the bill</span></h1>
+        <p class="tagline">Browse original virtual fashion, fill your cart, check out with coins, and keep every piece in your closet. Nothing real is sold or shipped.</p>
+        <p class="platforms">iPhone &middot; Free coins daily &middot; No real purchases required</p>
+        <a class="download-btn" href="https://apps.apple.com/us/app/dreamcart-dopamine-shopping/id6787820106">Download for free</a>
+    </section>
+
+    <section class="showcase">
+        <div class="showcase-scroll">
+            <div class="showcase-card">
+                <img src="appstore-screenshot-01.png" alt="Browse the drop. &mdash; Original virtual clothing brands across ten style worlds">
+            </div>
+            <div class="showcase-card">
+                <img src="appstore-screenshot-02.png" alt="Free coins every day. &mdash; Daily coin drop and streak">
+            </div>
+            <div class="showcase-card">
+                <img src="appstore-screenshot-03.png" alt="Check out with coins. &mdash; Virtual checkout with no real payment">
+            </div>
+            <div class="showcase-card">
+                <img src="appstore-screenshot-04.png" alt="Your closet. &mdash; Everything you've bought, ready to style into outfits">
+            </div>
+            <div class="showcase-card">
+                <img src="appstore-screenshot-05.png" alt="Spin the wheel. &mdash; The free daily wheel for bonus coins">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-header">
+                <h2>All the ritual, none of the regret</h2>
+                <p>Free to play. Coin packs are optional and never required.</p>
+            </div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="label">Every day</span>
+                <h3>Free coins on open</h3>
+                <p>Claim the daily drop, keep your streak alive, and spin the free wheel for a bonus.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Browse</span>
+                <h3>Ten style worlds</h3>
+                <p>Quiet luxury, Y2K streetwear, eveningwear, and more, all original virtual brands.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Cart</span>
+                <h3>Fill it guilt-free</h3>
+                <p>Add tops, bottoms, dresses, shoes, jackets, jewelry, sunglasses, hats, bags, and accessories, then check out with coins.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Unboxing</span>
+                <h3>The delivery moment</h3>
+                <p>Virtual checkout and delivery, complete with the part that actually feels good: opening it.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Closet</span>
+                <h3>Everything you own</h3>
+                <p>Every purchase joins your closet, sorted and searchable, yours to keep.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Outfit builder</span>
+                <h3>Style a look</h3>
+                <p>Mix pieces into outfits and save your favorites to come back to.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">New drops</span>
+                <h3>Fresh pieces daily</h3>
+                <p>The catalog restocks every day, so there's always something new to want.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label coins">Coins &middot; Optional</span>
+                <h3>Only if you want</h3>
+                <p>Consumable coin packs are available through Apple, but the game is fully playable without buying any.</p>
+            </div>
+            <div class="feature-card">
+                <span class="label">Virtual only</span>
+                <h3>No merchandise</h3>
+                <p>Items, coins, checkout, and delivery are imaginary and have no cash value. Nothing physical ships.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy">
+        <div class="container">
+            <div class="lockup">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h2>What DreamCart stores</h2>
+            <p>Sign in with Apple gives DreamCart a stable ID, never your email unless you share it. Your coins, closet, outfits, streak, and in-game activity sync through the app's backend so progress follows you between sessions. Purchases are processed by Apple and validated through RevenueCat. Nothing is sold to advertisers, and no shipping address is ever collected because nothing ships.</p>
+            <a href="privacy-policy.html">Privacy Policy &rarr;</a>
+        </div>
+    </section>
+
+    <section class="more-info">
+        <div class="container">
+            <div class="more-info-header">
+                <h2>More info</h2>
+                <p>How it's built and why it matters.</p>
+            </div>
+            <div class="more-info-content">
+                <div class="more-info-section">
+                    <h3>The Pitch</h3>
+                    <p>Shopping feels good long before the package arrives. Browsing, choosing, filling a cart, checking out, unboxing: that's the loop, and the credit card bill is just the part bolted onto the end.</p>
+                    <p>DreamCart keeps the loop and drops the bill. Coins arrive free every day, the catalog is original virtual fashion, and everything you check out with joins a closet you can style. No merchandise exists, and none is shipped.</p>
+                </div>
+
+                <div class="more-info-section">
+                    <h3>Coins</h3>
+                    <p>DreamCart is free to play. Coins arrive from the daily drop, the free daily wheel, and streaks.</p>
+                    <p><strong>Optional coin packs.</strong> Consumable packs from $1.99 to $49.99 are available through Apple for players who want to shop faster. They are for in-app use only, have no cash value, and are never required to keep playing.</p>
+                    <p><strong>No paid tier.</strong> There is no subscription and no locked content: every world, every drop, and the whole closet are open to free players.</p>
+                </div>
+
+                <div class="more-info-section">
+                    <h3>Specs</h3>
+                    <table class="specs-table">
+                        <tr><td>Platform</td><td>iOS 17+</td></tr>
+                        <tr><td>Language</td><td>Swift 6 with strict concurrency</td></tr>
+                        <tr><td>Framework</td><td>SwiftUI &middot; StoreKit 2 &middot; RevenueCat</td></tr>
+                        <tr><td>Data</td><td>Sign in with Apple; game state synced to the app's backend</td></tr>
+                        <tr><td>Storage</td><td>Supabase backend, local cache for browsing</td></tr>
+                        <tr><td>Catalog</td><td>Original artwork generated and refreshed daily</td></tr>
+                    </table>
+                </div>
+
+                <div class="more-info-section">
+                    <h3>What Mattered</h3>
+                    <p><strong>Virtual, stated everywhere.</strong> Checkout, delivery, and the closet all say plainly that nothing physical is sold. A shopping game that's coy about that is a trap.</p>
+                    <p><strong>Free coins first.</strong> The daily drop and wheel are generous enough that coin packs feel like impatience, not a wall.</p>
+                    <p><strong>An original catalog.</strong> Brands, pieces, and artwork are generated for the app, so nothing leans on a real retailer's name or imagery.</p>
+                    <p><strong>Progress that survives.</strong> Closet, coins, and streaks live server-side, so a new phone doesn't wipe a year of hauls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="disclaimer">
+        <div class="container">
+            <p>DreamCart is a game. All items, coins, checkout, and delivery are imaginary and have no cash value. No physical products are sold or shipped, and optional coin packs are for in-app use only.</p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Start your haul</h2>
+        <p>Free on the App Store. Free coins every day. No real shopping involved.</p>
+        <a class="download-btn" href="https://apps.apple.com/us/app/dreamcart-dopamine-shopping/id6787820106">Download for free</a>
+    </section>
+
+    <footer>
+        <div class="divider">&copy; 2026 Jack Wallner</div>
+        <div>
+            <a href="support.html">Support</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
+    </footer>
+
 </body>
 </html>
