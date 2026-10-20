@@ -9,6 +9,12 @@ on:
         description: "How many products to drop"
         default: "12"
 
+# A late cron and a watchdog run (ingest-watch on the iMac) can land together. One at a
+# time, so the second finds the day already topped up.
+concurrency:
+  group: daily-drop
+  cancel-in-progress: false
+
 jobs:
   drop:
     runs-on: ubuntu-latest
