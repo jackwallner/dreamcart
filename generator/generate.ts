@@ -12,7 +12,9 @@
 //   deno run --allow-net --allow-env generate.ts drop [--count 12]
 //     The daily drop: compose N fresh products, generate + store their images
 //     first, then insert rows (drop_date defaults to today). A product whose
-//     image can't be generated is skipped, never inserted half-baked.
+//     image can't be generated is skipped, never inserted half-baked. It only
+//     tops today up to N, so a late cron landing after a manual or watchdog run
+//     (ingest-watch on the iMac starts one when GitHub's cron runs late) adds nothing.
 //
 //   deno run --allow-net --allow-env generate.ts expand [--count 300] [--backdate 60]
 //     Catalog expansion: like drop, but spreads drop_date over the past N days
@@ -221,7 +223,20 @@ const mode = Deno.args[0];
 if (mode === "backfill") {
   await backfill();
 } else if (mode === "drop") {
-  await generate(argNum("count", 12), 0);
+  const today = new Date().toISOString().slice(0, 10);
+  const res = await rest(`products?select=id&drop_date=eq.${today}&is_active=eq.true`);
+  if (!res.ok) {
+    console.error(`couldn't count today's drop: ${res.status} ${await res.text()}`);
+    Deno.exit(1);
+  }
+  const have = (await res.json()).length;
+  const want = argNum("count", 12) - have;
+  if (want <= 0) {
+    console.log(`today's drop already has ${have} products`);
+  } else {
+    if (have) console.log(`today's drop has ${have}; topping up ${want}`);
+    await generate(want, 0);
+  }
 } else if (mode === "expand") {
   await generate(argNum("count", 300), argNum("backdate", 60));
 } else {
