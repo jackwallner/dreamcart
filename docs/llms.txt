@@ -1,0 +1,13 @@
+# DreamCart: Dopamine Shopping
+
+> A dopamine shopping game for iPhone. Browse virtual fashion, fill a cart, check out with free daily coins and build a closet. Nothing real is sold or shipped.
+
+## App
+
+- [DreamCart: Dopamine Shopping Game for iPhone](https://jackwallner.com/ios/dreamcart/index.html.md): A dopamine shopping game for iPhone. Browse virtual fashion, fill a cart, check out with free daily coins and build a closet. Nothing real is sold or shipped.
+
+## Optional
+
+- [DreamCart Privacy Policy](https://jackwallner.com/ios/dreamcart/privacy-policy.html.md): Privacy policy for the DreamCart iPhone app by Jack Wallner.
+- [DreamCart: Support](https://jackwallner.com/ios/dreamcart/support.html.md): DreamCart is a virtual fashion shopping game. You browse AI-generated style pieces, buy them with in-app coins, and build a closet and outfits. Nothing in...
+- [DreamCart Terms of Use](https://jackwallner.com/ios/dreamcart/terms.html.md): Terms of use for the DreamCart iPhone app by Jack Wallner.
