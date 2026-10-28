@@ -33,7 +33,7 @@
   "@graph": [
     {
       "@type": "MobileApplication",
-      "dateModified": "2026-10-27",
+      "dateModified": "2026-10-28",
       "@id": "https://jackwallner.com/ios/dreamcart/#app",
       "name": "DreamCart: Dopamine Shopping",
       "alternateName": "DreamCart",
@@ -537,7 +537,7 @@
             color: #6e6e73;
         }
 
-        footer a {
+        footer a { display: inline-block; padding: 6px 0;
             color: #6e6e73;
             text-decoration: none;
             margin: 0 10px;
@@ -581,8 +581,8 @@
 
     <nav>
         <div class="container">
-            <a class="nav-brand" href="./">
-                <img src="icon_256.png" alt="DreamCart">
+            <a class="nav-brand" href="./" aria-label="DreamCart">
+                <img src="icon_64.webp" alt="" width="32" height="32">
                 <span>DreamCart</span>
             </a>
             <a class="nav-link" href="https://apps.apple.com/us/app/dreamcart-dopamine-shopping/id6787820106?pt=128748779&amp;ct=jw-dreamcart-home&amp;mt=8">Download</a>
@@ -599,19 +599,19 @@
     <section class="showcase">
         <div class="showcase-scroll">
             <div class="showcase-card">
-                <img src="appstore-screenshot-01.webp" alt="Browse the drop. Original virtual clothing brands across ten style worlds" loading="lazy" decoding="async" width="720" height="1564">
+                <img src="appstore-screenshot-01.webp" srcset="appstore-screenshot-01-360.webp 360w, appstore-screenshot-01-540.webp 540w, appstore-screenshot-01.webp 720w" sizes="(max-width: 480px) 166px, (max-width: 768px) 184px, 249px" alt="Browse the drop. Original virtual clothing brands across ten style worlds" loading="lazy" decoding="async" width="720" height="1564">
             </div>
             <div class="showcase-card">
-                <img src="appstore-screenshot-02.webp" alt="Free coins every day. Daily coin drop and streak" loading="lazy" decoding="async" width="720" height="1564">
+                <img src="appstore-screenshot-02.webp" srcset="appstore-screenshot-02-360.webp 360w, appstore-screenshot-02-540.webp 540w, appstore-screenshot-02.webp 720w" sizes="(max-width: 480px) 166px, (max-width: 768px) 184px, 249px" alt="Free coins every day. Daily coin drop and streak" loading="lazy" decoding="async" width="720" height="1564">
             </div>
             <div class="showcase-card">
-                <img src="appstore-screenshot-03.webp" alt="Check out with coins. Virtual checkout with no real payment" loading="lazy" decoding="async" width="720" height="1564">
+                <img src="appstore-screenshot-03.webp" srcset="appstore-screenshot-03-360.webp 360w, appstore-screenshot-03-540.webp 540w, appstore-screenshot-03.webp 720w" sizes="(max-width: 480px) 166px, (max-width: 768px) 184px, 249px" alt="Check out with coins. Virtual checkout with no real payment" loading="lazy" decoding="async" width="720" height="1564">
             </div>
             <div class="showcase-card">
-                <img src="appstore-screenshot-04.webp" alt="Your closet. Everything you've bought, ready to style into outfits" loading="lazy" decoding="async" width="720" height="1564">
+                <img src="appstore-screenshot-04.webp" srcset="appstore-screenshot-04-360.webp 360w, appstore-screenshot-04-540.webp 540w, appstore-screenshot-04.webp 720w" sizes="(max-width: 480px) 166px, (max-width: 768px) 184px, 249px" alt="Your closet. Everything you've bought, ready to style into outfits" loading="lazy" decoding="async" width="720" height="1564">
             </div>
             <div class="showcase-card">
-                <img src="appstore-screenshot-05.webp" alt="Spin the wheel. The free daily wheel for bonus coins" loading="lazy" decoding="async" width="720" height="1564">
+                <img src="appstore-screenshot-05.webp" srcset="appstore-screenshot-05-360.webp 360w, appstore-screenshot-05-540.webp 540w, appstore-screenshot-05.webp 720w" sizes="(max-width: 480px) 166px, (max-width: 768px) 184px, 249px" alt="Spin the wheel. The free daily wheel for bonus coins" loading="lazy" decoding="async" width="720" height="1564">
             </div>
         </div>
     </section>
@@ -766,7 +766,7 @@
     </section>
 
     <footer>
-        <div class="divider">&copy; 2026 Jack Wallner · Last updated <time datetime="2026-10-27" data-updated>October 27, 2026</time></div>
+        <div class="divider">&copy; 2026 Jack Wallner · Last updated <time datetime="2026-10-28" data-updated>October 28, 2026</time></div>
         <div>
             <a href="support.html">Support</a>
             <a href="privacy-policy.html">Privacy</a>
